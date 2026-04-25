@@ -2,6 +2,17 @@
 
 import type { FC } from 'react'
 
+const ICONS: Record<string, string> = {
+  burger: '🍔',
+  sauces: '🌶️',
+  croque: '🥪',
+  wraps: '🌯',
+  'finger-food': '🍟',
+  crepes: '🥞',
+  'family-box': '📦',
+  drinks: '🥤'
+}
+
 const CategoryBar: FC<{
   categories: any[]
   selected?: string | null
@@ -11,15 +22,18 @@ const CategoryBar: FC<{
     <div className="flex gap-3 overflow-x-auto pb-2">
       <button
         onClick={() => onSelect?.(null)}
-        className={`px-4 py-2 rounded-full text-sm font-bold ${selected === null ? 'bg-brand-primary text-white' : 'text-zinc-400 hover:text-white bg-transparent'}`}>
+        aria-pressed={selected === null}
+        className={`px-5 py-3 rounded-full text-base font-bold ${selected === null ? 'bg-brand-primary text-white' : 'text-zinc-400 hover:text-white bg-transparent'}`}>
         Alle
       </button>
       {categories.map((cat) => (
         <button
           key={cat.id}
           onClick={() => onSelect?.(cat.id)}
-          className={`px-4 py-2 rounded-full text-sm font-bold ${selected === cat.id ? 'bg-brand-primary text-white' : 'text-zinc-400 hover:text-white bg-transparent'}`}>
-          {cat.name}
+          aria-pressed={selected === cat.id}
+          className={`px-5 py-3 rounded-full text-base font-bold flex items-center gap-2 ${selected === cat.id ? 'bg-brand-primary text-white' : 'text-zinc-400 hover:text-white bg-transparent'}`}>
+          <span className="text-xl leading-none">{ICONS[cat.id] ?? '🍽️'}</span>
+          <span>{cat.name}</span>
         </button>
       ))}
     </div>

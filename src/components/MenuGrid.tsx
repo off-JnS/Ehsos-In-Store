@@ -10,7 +10,7 @@ export default function MenuGrid({ categories }: { categories: any[] }) {
           <h2 className="text-xl font-bold mb-3">{category.name}</h2>
           <div className="grid grid-cols-1 gap-4">
             {category.items.map((item: any) => (
-              <MenuItemCardInStore key={item.id} item={item} />
+              <MenuItemCardInStore key={item.id} item={item} categorySlug={category.slug} />
             ))}
           </div>
         </section>

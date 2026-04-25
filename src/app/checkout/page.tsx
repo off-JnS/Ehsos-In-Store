@@ -1,16 +1,22 @@
 "use client"
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { useCartStore } from '../../store/cart'
 import { formatPrice } from '../../lib/format'
 
 export default function CheckoutPage() {
+  const router = useRouter()
   const items = useCartStore((s) => s.items)
   const subtotal = useCartStore((s) => s.subtotal())
   const [paymentMethod, setPaymentMethod] = useState<'card' | 'paypal' | 'cash' | null>(null)
 
   return (
     <main className="max-w-3xl mx-auto px-4 py-8">
+      <div className="mb-4">
+        <button onClick={() => router.back()} className="btn btn-ghost">Zurück</button>
+      </div>
+
       <h1 className="text-2xl font-bold mb-4">Bezahlung & Zusammenfassung</h1>
 
       <div className="space-y-3">

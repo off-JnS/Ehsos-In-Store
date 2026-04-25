@@ -6,19 +6,24 @@ import { useCartStore } from '../store/cart'
 import { formatPrice } from '../lib/format'
 import CustomizeModal from './CustomizeModal'
 
-export default function MenuItemCardInStore({ item }: { item: any }) {
+export default function MenuItemCardInStore({ item, categorySlug }: { item: any; categorySlug: string }) {
   const [open, setOpen] = useState(false)
   const [customizing, setCustomizing] = useState(false)
   const { items, addItem, updateQuantity } = useCartStore()
   const cartItem = items.find((i) => i.menu_item.id === item.id && (!i.customizations || i.customizations.length === 0))
   const quantity = cartItem?.quantity ?? 0
 
+  const imageSrc = item.image_url || `/images/${categorySlug}/placeholder.svg`
+
   return (
     <div className="card flex flex-col gap-3">
       <div className="flex items-center justify-between" onClick={() => setOpen(!open)}>
-        <div>
-          <h3 className="font-semibold text-white">{item.name}</h3>
-          {item.description && <p className="text-zinc-400 text-sm">{item.description}</p>}
+        <div className="flex items-center gap-3">
+          <img src={imageSrc} alt={item.name} className="w-24 h-20 object-cover rounded-md" />
+          <div>
+            <h3 className="font-semibold text-white">{item.name}</h3>
+            {item.description && <p className="text-zinc-400 text-sm">{item.description}</p>}
+          </div>
         </div>
         <div className="text-right">
           <div className="text-brand-primary font-bold">{formatPrice(item.price)}</div>
