@@ -20,12 +20,6 @@ const CategoryBar: FC<{
 }> = ({ categories, selected = null, onSelect }) => {
   return (
     <div className="flex gap-3 overflow-x-auto pb-2">
-      <button
-        onClick={() => onSelect?.(null)}
-        aria-pressed={selected === null}
-        className={`px-5 py-3 rounded-full text-base font-bold ${selected === null ? 'bg-brand-primary text-white' : 'text-zinc-400 hover:text-white bg-transparent'}`}>
-        Alle
-      </button>
       {categories.map((cat) => (
         <button
           key={cat.id}

@@ -1,7 +1,7 @@
 export const MENU = [
   {
     id: 'burger',
-    name: '🍔 Burger',
+    name: 'Burger',
     slug: 'burger',
     items: [
       { id: 'hamburger', name: 'Hamburger', description: 'Beef 150g, karamellisierte Zwiebeln, frische Tomaten und Gewürzgurken', price: 8.0, allergens: ['a','d','g','l','m'], image_url: '', is_available: true },

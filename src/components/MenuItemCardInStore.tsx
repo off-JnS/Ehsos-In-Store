@@ -13,7 +13,7 @@ export default function MenuItemCardInStore({ item, categorySlug }: { item: any;
   const cartItem = items.find((i) => i.menu_item.id === item.id && (!i.customizations || i.customizations.length === 0))
   const quantity = cartItem?.quantity ?? 0
 
-  const imageSrc = item.image_url || `/images/${categorySlug}/placeholder.svg`
+  const imageSrc = item.image_url || `https://source.unsplash.com/800x600/?${categorySlug}`
 
   return (
     <div className="card flex flex-col gap-3">
