@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand-primary: #f97316;
+  --brand-primary-dark: #ea580c;
+  --brand-gold: #fbbf24;
+  --brand-dark: #1a1a1a;
+  --brand-darker: #111111;
+  --brand-surface: #222222;
+  --brand-surface-light: #2a2a2a;
+  --brand-text-light: #f8f8f8;
+  --brand-muted: #888888;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  background-color: var(--brand-darker);
+  color: var(--brand-text-light);
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer components {
+  .logo { font-family: 'Bebas Neue', 'Inter', system-ui, sans-serif; text-transform: uppercase; letter-spacing: 2px; font-size: 1.8rem }
+  .logo-accent { color: var(--brand-primary) }
+
+  .btn { @apply inline-flex items-center justify-center font-semibold transition-all duration-200 active:scale-95; border-radius: 9999px }
+  .btn-primary { @apply text-white px-6 py-3; background-color: var(--brand-primary) }
+  .btn-primary:hover { background-color: var(--brand-primary-dark); box-shadow: 0 6px 20px rgba(249,115,22,0.18) }
+  .btn-outline { @apply text-white px-6 py-3 border; border-color: rgba(255,255,255,0.12); background: transparent }
+  .btn-secondary { @apply text-white px-6 py-3 border; border-color: rgba(255,255,255,0.08); background: transparent }
+  .btn-sm { @apply text-sm px-3 py-2; border-radius: 0.5rem; }
+
+  .card { @apply rounded-2xl p-4; background-color: var(--brand-surface); border: 1px solid rgba(255,255,255,0.05) }
+  .card:hover { border-color: rgba(249,115,22,0.24) }
+
+  .input { @apply w-full text-white px-4 py-3 rounded-xl; background-color: var(--brand-surface); border: 1px solid rgba(255,255,255,0.06) }
+
+  .badge { @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-bold; background: rgba(17,17,17,0.28); border: 1px solid rgba(255,255,255,0.1); color: var(--brand-primary); letter-spacing: 2px; text-transform: uppercase }
+}
