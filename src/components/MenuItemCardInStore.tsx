@@ -1,13 +1,12 @@
 "use client"
 
 import { useState } from 'react'
-import { Plus, Minus, ChevronDown } from 'lucide-react'
+import { Plus, Minus } from 'lucide-react'
 import { useCartStore } from '../store/cart'
 import { formatPrice } from '../lib/format'
 import CustomizeModal from './CustomizeModal'
 
 export default function MenuItemCardInStore({ item, categorySlug }: { item: any; categorySlug: string }) {
-  const [open, setOpen] = useState(false)
   const [customizing, setCustomizing] = useState(false)
   const { items, addItem, updateQuantity } = useCartStore()
   const cartItem = items.find((i) => i.menu_item.id === item.id && (!i.customizations || i.customizations.length === 0))
@@ -18,7 +17,7 @@ export default function MenuItemCardInStore({ item, categorySlug }: { item: any;
 
   return (
     <div className="card flex flex-col gap-3">
-      <div className="flex items-center justify-between" onClick={() => setOpen(!open)}>
+      <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
           <img src={imageSrc} alt={item.name} className="w-24 h-20 object-cover rounded-md" />
           <div>
